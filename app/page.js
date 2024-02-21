@@ -30,8 +30,8 @@ const Home = () => {
       callback: (text) => {
         console.log("text", text);
         sendMessage(text);
-        // msg.text = text;
-        // window.speechSynthesis.speak(msg);
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
         socket.on("response", (r) => {
           console.log("respons", r);
           msg.text = r;
