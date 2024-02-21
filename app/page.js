@@ -18,7 +18,7 @@ const sendMessage = (msg) => {
 };
 
 const Home = () => {
-  // const msg = new SpeechSynthesisUtterance();
+  const msg = new SpeechSynthesisUtterance();
 
   useEffect(() => {
     socket.emit("register", deviceThreadId);
@@ -26,7 +26,7 @@ const Home = () => {
 
   const commands = [
     {
-      command: "Where *",
+      command: "Salut *",
       callback: (text) => {
         console.log("text", text);
         sendMessage(text);
@@ -34,8 +34,8 @@ const Home = () => {
         // window.speechSynthesis.speak(msg);
         socket.on("response", (r) => {
           console.log("respons", r);
-          // msg.text = r;
-          // window.speechSynthesis.speak(msg);
+          msg.text = r;
+          window.speechSynthesis.speak(msg);
         });
       },
     },
