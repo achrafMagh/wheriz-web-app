@@ -31,6 +31,10 @@ const Home = () => {
         console.log("text", text);
         sendMessage(text);
         msg.text = text;
+
+        if (window["speechSynthesis"] === undefined) {
+          return;
+        }
         window.speechSynthesis.speak(msg);
         socket.on("response", (r) => {
           console.log("respons", r);
